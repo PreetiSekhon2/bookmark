@@ -1,0 +1,29 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/preetiudas/projects/bookmark/spec/features/add_bm_spec.rb": [
+
+      ],
+      "/Users/preetiudas/projects/bookmark/spec/features/delete_bm_spec.rb": [
+
+      ],
+      "/Users/preetiudas/projects/bookmark/spec/features/login_spec.rb": [
+
+      ],
+      "/Users/preetiudas/projects/bookmark/spec/features/update_bm_spec.rb": [
+
+      ],
+      "/Users/preetiudas/projects/bookmark/spec/features/view_bm_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1540220386
+  }
+}

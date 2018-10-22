@@ -1,0 +1,125 @@
+shotgun app.rb -p 4567
+The -p switch tells shotgun what port to use.
+
+gem install sinatra = web server // prod env
+brew install httpie = client tool to interact with web server via command line
+
+Home brew is install manager
+
+bundle install // bundle is installation manager
+
+
+"shotgun" = web server that checks config files more often; session gets resets rapidly / dev env/Shotgun works by reloading your entire application on every request.
+"capybara" = In Ruby, we can use Capybara as an add-on to RSpec to compose our instructions.
+
+Capybara helps you test web applications by simulating how a real user would interact with your app. It is agnostic about the driver running your tests and comes with Rack::Test and Selenium support built in. WebKit is supported through an external gem.
+"selenium-webdriver" - You can switch to the Capybara.javascript_driver (:selenium by default)
+
+Rack is the underlying technology behind nearly all of the web frameworks in the Ruby world. "Rack" is actually a few different things:
+An architecture - Rack defines a very simple interface, and any code that conforms to this interface can be used in a Rack application
+
+http = network layer
+tcp = transfport layer
+
+ssl= secure socket layer
+
+Bundler, which is a dependency management program for Ruby
+
+All client-server protocols operate in the application layer.
+
+JSON = way of communicating data over HTTP
+
+erb = very powerful. It is part of the Ruby Standard Library. empty interpolated Ruby Expression using <%= %> ('ERB tags')
+
+YAML version 1.2 is a superset of JSON;
+
+XML has been used to describe structured data and to serialize objects.
+
+Representational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services.
+
+There are three important things to note here:
+
+The path in the first line is simply /foo.php and there is no query string anymore.
+Content-Type and Content-Lenght headers have been added, which provide information about the data being sent.
+All the data is in now sent after the headers, with the same format as the query string.
+
+
+-------
+
+A tag with an equals sign indicates that enclosed code is an expression, and that the renderer should substitute the code element with the result of the code (as a string) when it renders the template. Use an expression to embed a line of code into the template, or to display the contents of a variable:
+
+Hello, <%= @name %>.
+Today is <%= Time.now.strftime('%A') %>.
+Tags without the equals sign denote that the enclosed code is a scriptlet. Each scriptlet is caught and executed, and the final result of the code is then injected in to the output at the point of the scriptlet.
+
+Scriptlets are most commonly used for embedding loops or conditional logic into templates:
+
+<% for @item in @shopping_list %>
+  <%= @item %>
+<% end %>
+
+
+----
+HyperText Markup Language (HTML), Cascading Style Sheets (CSS), and JavaScript (JS) are complementary languages used in the development of webpages and websites. HTML is mainly used for organization of webpage content, CSS is used for definition of content presentation style, and JS defines how the content interacts and behaves with the user.
+
+
+------
+For example, if you have a lot of links on your website, you can periodically send HEAD requests to all of them to check for broken links. This will work much faster than using GET.
+
+HTTP Status Codes
+200's are used for successful requests.
+300's are for redirections.
+400's are used if there was a problem with the request.
+500's are used if there was a problem with the server.
+
+
+basic web framework, Sinatra // Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort:
+
+
+In Sinatra, a route is an HTTP method paired with a URL-matching pattern. Each route is associated with a block:
+
+----
+
+Query String Params
+
+Query string parameters are passed to the application through the address bar, using a ? as so:
+
+http://localhost:9393/whatsup?name=bruce&surname=wayne
+The application can handle these params in the controller as follows:
+
+get '/whatsup' do
+  "Whats up " + params[:name] + " " + params[:surname]"
+end
+Query String params are fantastic because they allow you to have descriptive URLs
+
+URL Path Parameters
+
+These parameters are passed to the application as a part of the URL Path:
+
+http://localhost:9393/hello/clark/kent
+This can then be handled in the controller as follows:
+
+get '/hello/:name/:surname' do
+  "Hello " + params[:name] + " " + params[:surname]"
+end
+It is important to note that, unlike query string params, path params are sequential - that is, they have to appear in the URL in the order prescribed in the controller.
+
+Path params are great because they allow you to have descriptive paths that can be even be edited directly by the user. For a great example of this, check out Kayak.com - when you search for a flight, they use path params to display the result, e.g. http://www.kayak.co.uk/flights/LON-SIN/2015-01-16/2015-02-12
+
+Splat Parameters
+
+Splat params are similar to Path params, but they use the wildcard * as a placeholder for anything.
+
+Consider this URI:
+
+http://localhost:9393/say/hello/to/snoopy
+And this controller:
+
+get '/say/*/to/*' do
+  params[:splat][0] + ' ' + params[:splat][1] + '!'
+end
+
+# => 'hello snoopy!'
+Sinatra will actually take the splat values and put them into an array that is stored in the params hash. So in this case, params would look something like this:
+
+{:splat => ['hello', 'snoopy']}
